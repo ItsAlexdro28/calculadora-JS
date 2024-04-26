@@ -1,38 +1,65 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap');
 body * {
     padding: 0%;
     margin: 0px;
+    font-family: "Open Sans";
 }
 
-.container {
+.main {
+    width: 100%;
+    height: 100%;
+}
+
+.calculator{
+    margin: 4% 5%;
+    width: 90% ;
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
 }
 
-.output-screen {
+#output-screen {
+    font-size: 3em;
     width: 100%;
 }
 
 .buttons {
     width: 100%;
-    display: flex;
+    display: grid;
     justify-content: center;
+    align-items: center;
+    gap: 10px;
+    grid-template-columns: 1fr 1fr;
+}
+
+button {
+    border-radius: 20px;
 }
 
 #numbers-buttons {
     display: grid;
-    gap: 3px;
-    width: 50%;
-    grid-template-columns: repeat(3, minmax(75px, 1fr));
-    grid-auto-rows: minmax(75px, 1fr);     
+    gap: 10px;
+    grid-template-columns: repeat(3, minmax(50px, 1fr));
+    grid-auto-rows: minmax(100px, 1fr);     
     margin: 1%;
 }
 
 #operation-buttons {
     display: grid;
-    width: 50%;
-    gap: 3px;
-    grid-template-columns: repeat(2, minmax(75px, 1fr));
-    grid-auto-rows: minmax(75px, 1fr); 
+    gap: 10px;
+    grid-template-columns: repeat(2, minmax(50px, 1fr));
+    grid-auto-rows: minmax(100px, 1fr); 
     margin: 1%;
+}
+
+#base-buttons {
+    display: flex;
+    justify-content: space-around;
+    
+    grid-column: 1 / -1;
+}
+
+.btnBase {
+    width: 24%;
+    height: 100px;
 }
