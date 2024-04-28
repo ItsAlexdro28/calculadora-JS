@@ -1,21 +1,29 @@
-const btnNum = document.querySelectorAll(".btnNum");
-const btnOper = document.querySelectorAll(".btnOper");
+const btnMath= document.querySelectorAll(".btnMath");
 const output = document.querySelector("#output-screen");
 
-btnNum.forEach((btnNum) => {
-    btnNum.addEventListener("click", () => {
-        let btnPress = btnNum.innerHTML;
+var trueExpression = "0";
+let numberLength = ""
+btnMath.forEach((btnMath) => {
+    btnMath.addEventListener("click", () => {
+        let btnPress = btnMath.innerHTML;
         switch (true) {
-            case (output.innerHTML === "0" || output.innerHTML === "Error!"):
-                output.innerHTML = btnPress;
+            case (btnPress === "C"):
+                output.innerHTML = "0";
+                trueExpression = "0";
+                break;
+            case (btnMath.id === "number"):
+                numberLength += btnPress;
+                console.log(numberLength);
+                trueExpression = isInitial(btnPress, output.innerHTML);
+                output.innerHTML = isInitial(btnPress, output.innerHTML);
                 break;
             case (btnPress === "="):
-                output.innerHTML = equal(output.innerHTML);
+                output.innerHTML = equal();
+                trueExpression = "0";
                 break;    
-            case (false):
-                break;
             default:
-                output.innerHTML += btnPress;
+                trueExpression = isInitial(btnPress, output.innerHTML);
+                output.innerHTML = isInitial(btnPress, output.innerHTML);
                 break;
 
             
@@ -23,19 +31,12 @@ btnNum.forEach((btnNum) => {
     });
 });
 
-btnOper.forEach((btnOper) => {
-    btnOper.addEventListener("click", () => {
-        let btnPress = btnOper.innerHTML;
-        switch (true) {
-            case (false):
-                break;
-            default:
-                output.innerHTML += btnPress;
-                break;
-        }
-    });
-});
-
-function equal (mathExpression) {
-    return eval((mathExpression));
+function isInitial (btnPress, display) {
+    if (display === "0" || display === "Error!"){
+        return btnPress;
+    }
+    return display + btnPress;
+}
+function equal () {
+    return eval((trueExpression));
 }
